@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="KtlintProjectConfiguration">
+    <disabledRules>
+      <list>
+        <option value="no-blank-line-before-rbrace" />
+        <option value="no-empty-first-line-in-method-block" />
+        <option value="no-trailing-spaces" />
+        <option value="trailing-comma-on-call-site" />
+        <option value="trailing-comma-on-call-site" />
+        <option value="trailing-comma-on-declaration-site" />
+        <option value="trailing-comma-on-declaration-site" />
+      </list>
+    </disabledRules>
+  </component>
+</project>
