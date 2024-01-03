@@ -35,8 +35,9 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ptut.canvasexample.weightPicker.Scale
+import com.ptut.canvasexample.clockCanvas.Clock
 import com.ptut.canvasexample.weightPicker.ScaleStyle
+import com.ptut.canvasexample.weightPicker.WeightScale
 import kotlinx.coroutines.delay
 import kotlin.math.pow
 import kotlin.math.roundToInt
@@ -47,25 +48,57 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            var weight by remember {
-                mutableIntStateOf(80)
-            }
             Box(
-                modifier = Modifier
-                    .fillMaxSize()
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
             ) {
-                Scale(
-                    style = ScaleStyle(
-                        scaleWidth = 150.dp
-                    ),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(300.dp)
-                        .align(Alignment.BottomCenter)
-                ) { newWeight ->
-                    weight = newWeight
+                val milliseconds = remember {
+                    System.currentTimeMillis()
                 }
+                var seconds by remember {
+                    mutableStateOf((milliseconds / 1000f) % 60f)
+                }
+                var minutes by remember {
+                    mutableStateOf(((milliseconds / 1000f) / 60) % 60f)
+                }
+                var hours by remember {
+                    mutableStateOf((milliseconds / 1000f) / 3600f + 2f)
+                }
+                LaunchedEffect(key1 = seconds) {
+                    delay(1000L)
+                    minutes += 1f / 60f
+                    hours += 1f / (60f * 12f)
+                    seconds += 1f
+                }
+                Clock(
+                    seconds = seconds,
+                    minutes = minutes,
+                    hours = hours
+                )
             }
+        }
+    }
+}
+
+@Composable
+fun BoxScreen() {
+    var weight by remember {
+        mutableIntStateOf(80)
+    }
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
+        WeightScale(
+            style = ScaleStyle(
+                scaleWidth = 150.dp
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(300.dp)
+                .align(Alignment.BottomCenter)
+        ) { newWeight ->
+            weight = newWeight
         }
     }
 }

@@ -25,7 +25,7 @@ import kotlin.math.roundToInt
 import kotlin.math.sin
 
 @Composable
-fun Scale(
+fun WeightScale(
     modifier: Modifier = Modifier,
     style: ScaleStyle = ScaleStyle(),
     minWeight: Int = 20,
