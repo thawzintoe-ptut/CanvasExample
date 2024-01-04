@@ -18,8 +18,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ptut.canvasexample.gender_picker.GenderPickerScreen
-import com.ptut.canvasexample.pathBasics.PathEffectsScreen
+import com.ptut.canvasexample.imageBlend.ImageBlendFilter
+import com.ptut.canvasexample.imageBlend.ImageBlendScreen
 import com.ptut.canvasexample.tictactoe.Player
 import com.ptut.canvasexample.tictactoe.TicTacToe
 
@@ -30,32 +30,33 @@ class MainActivity : ComponentActivity() {
 //            GenderPickerScreen(
 //                modifier = Modifier.fillMaxSize()
 //            )
-            var winningPlayer by remember {
-                mutableStateOf<Player?>(null)
-            }
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                TicTacToe(
-                    onNewRound = {
-                        winningPlayer = null
-                    },
-                    onPlayerWin = {
-                        winningPlayer = it
-                    }
-                )
-                Spacer(modifier = Modifier.height(50.dp))
-
-                winningPlayer?.let {
-                    Text(
-                        text = "Player ${it.symbol} has won!",
-                        fontSize = 25.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                }
-            }
+//            var winningPlayer by remember {
+//                mutableStateOf<Player?>(null)
+//            }
+//            Column(
+//                modifier = Modifier.fillMaxSize(),
+//                verticalArrangement = Arrangement.Center,
+//                horizontalAlignment = Alignment.CenterHorizontally
+//            ) {
+//                TicTacToe(
+//                    onNewRound = {
+//                        winningPlayer = null
+//                    },
+//                    onPlayerWin = {
+//                        winningPlayer = it
+//                    }
+//                )
+//                Spacer(modifier = Modifier.height(50.dp))
+//
+//                winningPlayer?.let {
+//                    Text(
+//                        text = "Player ${it.symbol} has won!",
+//                        fontSize = 25.sp,
+//                        fontWeight = FontWeight.Bold
+//                    )
+//                }
+//            }
+            ImageBlendFilter()
         }
     }
 }
